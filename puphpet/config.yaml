@@ -165,7 +165,7 @@ mysql:
             host: localhost
             user: wordpress
             password: wordpress
-            sql_file: ''
+            sql_file: '/vagrant/db.sql'
 postgresql:
     install: 0
     settings:
