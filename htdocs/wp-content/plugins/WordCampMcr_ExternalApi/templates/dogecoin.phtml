@@ -7,12 +7,17 @@
 <?php if(WordCampMcr_ExternalApi::isSubmitted()):
     $results = WordCampMcr_ExternalApi::getResults();
     if (is_wp_error($results)) :
-       
+       var_dump($results);
     else:
 ?>
 <hr />
 <h1> Results</h1>
-<h2><?php echo $results['doge_amount'], ' Dogecoins are worth ', $results['btc_amount'], ' Bitcoin, which in turn is worth &pound;', number_format($results['currency_amount'],2 ); ?></h2>
+<h2><?php
+$decimals = 2;
+if ($results['currency_amount'] < 0.1) {
+    $decimals = strlen($results['currency_amount']) - 2;
+}
+echo $results['doge_amount'], ' Dogecoin(s) are worth ', $results['btc_amount'], ' Bitcoin, which in turn is worth &pound;', number_format($results['currency_amount'],$decimals); ?></h2>
     <?php endif;
 endif; ?>
 <?php get_footer(); ?>
