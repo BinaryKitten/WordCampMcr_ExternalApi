@@ -9,6 +9,6 @@
 ?>
 <hr />
 <h1> Results</h1>
-<h2><?php echo $results['btc_amount'], ' BTC is worth &pound;', number_format($results['currency_amount']); ?></h2>
+<h2><?php echo $results['btc_amount'], ' BTC is worth &pound;', number_format($results['currency_amount'],2); ?></h2>
     <?php endif; ?>
 <?php get_footer(); ?>

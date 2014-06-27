@@ -1,0 +1,18 @@
+<?php get_header();?>
+<form action="/dogecoin" method="POST">
+    <label for="doge_amount">DogeCoin Amount:</label>
+    <input type="number" value="1" name="doge_amount" id="doge_amount"  step="0.1" />
+    <input type="submit" value="Convert to &pound;GBP" />
+</form>
+<?php if(WordCampMcr_ExternalApi::isSubmitted()):
+    $results = WordCampMcr_ExternalApi::getResults();
+    if (is_wp_error($results)) :
+       
+    else:
+?>
+<hr />
+<h1> Results</h1>
+<h2><?php echo $results['doge_amount'], ' Dogecoins are worth ', $results['btc_amount'], ' Bitcoin, which in turn is worth &pound;', number_format($results['currency_amount'],2 ); ?></h2>
+    <?php endif;
+endif; ?>
+<?php get_footer(); ?>
