@@ -21,8 +21,8 @@ class WordCampMcr_ExternalApi
     public function process_template_include($original_template)
     {
         global $wp;
-        if (isset($wp->query_vars["name"])) {
-            switch ($wp->query_vars['name']) {
+        if (isset($wp->query_vars["pagename"])) {
+            switch ($wp->query_vars['pagename']) {
                 case 'dogecoin':
                     return plugin_dir_path(__FILE__) . "templates/dogecoin.phtml";
                     break;
@@ -46,8 +46,8 @@ class WordCampMcr_ExternalApi
     {
         global $wp;
 
-        if (isset($wp->query_vars["name"])) {
-            switch ($wp->query_vars['name']) {
+        if (isset($wp->query_vars["pagename"])) {
+            switch ($wp->query_vars['pagename']) {
                 case 'dogecoin':
                     $title = 'DogeCoin ' . $sep . ' External API Example ' . $sep . ' ';
                     break;
@@ -62,7 +62,7 @@ class WordCampMcr_ExternalApi
     public static function getResults()
     {
         global $wp;
-        switch ($wp->query_vars['name']) {
+        switch ($wp->query_vars['pagename']) {
             case 'dogecoin':
                 $amount = filter_input(INPUT_POST, 'doge_amount', FILTER_DEFAULT, FILTER_SANITIZE_NUMBER_FLOAT);
                 if ($amount === null) {
@@ -121,8 +121,8 @@ class WordCampMcr_ExternalApi
     public static function isSubmitted()
     {
         global $wp;
-        if (isset($wp->query_vars["name"])) {
-            switch ($wp->query_vars['name']) {
+        if (isset($wp->query_vars["pagename"])) {
+            switch ($wp->query_vars['pagename']) {
                 case 'dogecoin':
                     return (filter_input(INPUT_POST, 'doge_amount', FILTER_DEFAULT, FILTER_SANITIZE_NUMBER_FLOAT) !== null);
                     break;
